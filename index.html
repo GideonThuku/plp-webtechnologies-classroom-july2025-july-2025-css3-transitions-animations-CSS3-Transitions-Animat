@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power Learn Project — Interactive Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="container">
+    <h1>Power Learn Project</h1>
+    <p class="tag">#1MillionDevs4Africa</p>
+  </header>
+
+  <section class="container hero">
+    <h2>Unlocking Africa's Tech Potential</h2>
+    <p class="lead">A Pan-African social impact organization equipping young Africans with essential tech skills and a vibrant community for growth.</p>
+    <div class="row">
+      <a class="btn" href="#" id="openModalBtn">Apply Now</a>
+      <button class="btn outline" id="animateBtn">See Animation</button>
+    </div>
+  </section>
+
+  <section class="container">
+    <h3>Programs</h3>
+    <div class="grid">
+      <div class="card">
+        <h4>16-Week Software Dev</h4>
+        <p>Beginner-friendly path covering Python, web, mobile, and emerging tech with projects and mentorship.</p>
+        <div class="pulse-ball"></div>
+      </div>
+      <div class="card">
+        <h4>AI Safari</h4>
+        <p>No-code introduction to AI concepts that prepares learners for deeper study and real use cases.</p>
+      </div>
+      <div class="card">
+        <h4>Talent Hub</h4>
+        <p>Job-ready talent network with coaching, mentorship, and soft-skills training for employers across Africa.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h3>Countries & Community</h3>
+    <p class="muted">Kenya, Nigeria, Tanzania, South Africa, Zambia. Join Power Community, Power Women, Coffee & Code, and the Mentor Network.</p>
+    <div class="row">
+      <div id="animateBox" class="box">PLP</div>
+      <div class="row">
+        <button class="btn" id="startLoadBtn">Start Loading</button>
+        <button class="btn" id="stopLoadBtn">Stop Loading</button>
+      </div>
+      <div id="loader" class="loader hidden" aria-label="loading"></div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h3>Functions Demo</h3>
+    <div class="row">
+      <div id="sizeBox" class="box wide">Box</div>
+    </div>
+    <div class="row">
+      <button class="btn" id="growBtn">Grow</button>
+      <button class="btn" id="shrinkBtn">Shrink</button>
+    </div>
+    <p id="scopeText" class="scope-line">Clicks: 0</p>
+    <button class="btn" id="scopeBtn">Click</button>
+  </section>
+
+  <div id="backdrop" class="backdrop hidden"></div>
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <h4 id="modalTitle">Apply to PLP</h4>
+    <p>Learn, code, grow with mentors, projects, and community. Beginner level, flexible schedule, 16 weeks.</p>
+    <div class="row">
+      <button class="btn" id="colorBtn">Change Theme</button>
+      <button class="btn outline" id="closeModalBtn">Close</button>
+    </div>
+  </div>
+
+  <footer class="container">
+    <p class="muted small">Demo site for transitions, animations, and JavaScript functions.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
