@@ -1,85 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Power Learn Project — Interactive Demo</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://public-frontend-cos.metadl.com/mgx/img/favicon.png" type="image/png">
+    <title>Africa Ability Trust - Empowering Communities</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="container">
-    <h1>Power Learn Project</h1>
-    <p class="tag">#1MillionDevs4Africa</p>
-  </header>
-
-  <section class="container hero">
-    <h2>Unlocking Africa's Tech Potential</h2>
-    <p class="lead">A Pan-African social impact organization equipping young Africans with essential tech skills and a vibrant community for growth.</p>
-    <div class="row">
-      <a class="btn" href="#" id="openModalBtn">Apply Now</a>
-      <button class="btn outline" id="animateBtn">See Animation</button>
+    <!-- Loading Animation -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loader"></div>
+        <p>Loading...</p>
     </div>
-  </section>
 
-  <section class="container">
-    <h3>Programs</h3>
-    <div class="grid">
-      <div class="card">
-        <h4>16-Week Software Dev</h4>
-        <p>Beginner-friendly path covering Python, web, mobile, and emerging tech with projects and mentorship.</p>
-        <div class="pulse-ball"></div>
-      </div>
-      <div class="card">
-        <h4>AI Safari</h4>
-        <p>No-code introduction to AI concepts that prepares learners for deeper study and real use cases.</p>
-      </div>
-      <div class="card">
-        <h4>Talent Hub</h4>
-        <p>Job-ready talent network with coaching, mentorship, and soft-skills training for employers across Africa.</p>
-      </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Africa Ability Trust</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link active" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('about')">About Us</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('what-we-do')">What We Do</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('contact')">Contact</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title fade-in">Empowering Communities</h1>
+                <p class="hero-subtitle slide-in-left">Building inclusive spaces of dignity and hope for Persons with Disabilities</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary pulse-btn" onclick="showModal('learnMore')">Learn More</button>
+                    <button class="btn btn-secondary bounce-btn" onclick="animateCard('mission-card')">Our Mission</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card" id="mission-card">
+                    <h3>Our Mission</h3>
+                    <p>Empowering Persons with Disabilities and caregivers by equipping communities, organizations and churches.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Cards Section -->
+        <section class="cards-section">
+            <div class="container">
+                <h2 class="section-title">Our Impact</h2>
+                <div class="cards-grid">
+                    <div class="flip-card" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h3>Family Empowerment</h3>
+                                <div class="card-icon">👨‍👩‍👧‍👦</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <p>We uplift the entire caregiving unit emotionally, economically, and spiritually.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flip-card" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h3>Community Support</h3>
+                                <div class="card-icon">🤝</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <p>Meeting practical needs through therapy, training, and advocacy.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flip-card" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h3>Faith Integration</h3>
+                                <div class="card-icon">⛪</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <p>Integrating persons with disabilities into spiritual life of communities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Demo Section -->
+        <section class="demo-section">
+            <div class="container">
+                <h2>Interactive Demo</h2>
+                <div class="demo-controls">
+                    <button class="btn btn-demo" onclick="startAnimation()">Start Animation</button>
+                    <button class="btn btn-demo" onclick="stopAnimation()">Stop Animation</button>
+                    <button class="btn btn-demo" onclick="resetDemo()">Reset</button>
+                </div>
+                <div class="demo-area">
+                    <div class="animated-box" id="demoBox">
+                        <p>Interactive Element</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-  </section>
 
-  <section class="container">
-    <h3>Countries & Community</h3>
-    <p class="muted">Kenya, Nigeria, Tanzania, South Africa, Zambia. Join Power Community, Power Women, Coffee & Code, and the Mentor Network.</p>
-    <div class="row">
-      <div id="animateBox" class="box">PLP</div>
-      <div class="row">
-        <button class="btn" id="startLoadBtn">Start Loading</button>
-        <button class="btn" id="stopLoadBtn">Stop Loading</button>
-      </div>
-      <div id="loader" class="loader hidden" aria-label="loading"></div>
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title fade-in">About Us</h1>
+                <div class="breadcrumb">
+                    <a href="#" onclick="showPage('home')">Home</a> / <span>About Us</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="content-grid">
+                    <div class="content-text">
+                        <div class="text-block slide-in-left">
+                            <p class="intro-text">
+                                Africa Ability Trust is a registered nonprofit organization in Kenya, empowering Persons with Disabilities and caregivers by equipping communities, organizations and churches to build inclusive spaces of dignity and hope.
+                            </p>
+                        </div>
+
+                        <div class="text-block slide-in-right">
+                            <p>
+                                Africa Ability Trust is based in Kibera, just five kilometers southwest of Nairobi. Though it spans only 2.5 square kilometers, Kibera is home to nearly one million people, making it one of the most densely populated places in the world.
+                            </p>
+                        </div>
+
+                        <div class="text-block slide-in-left">
+                            <p>
+                                In the heart of this vibrant yet underserved community, we walk with families navigating disability, poverty, and social stigma. Our work is rooted in proximity, dignity, and lasting transformation.
+                            </p>
+                        </div>
+
+                        <div class="approach-section">
+                            <h2 class="section-title bounce-in">Our Approach</h2>
+                            
+                            <div class="approach-cards">
+                                <div class="approach-card hover-lift" onclick="highlightCard(this)">
+                                    <div class="card-number">01</div>
+                                    <h3>Beyond Charity</h3>
+                                    <p>We go beyond charity. We journey with families, strengthen faith communities, and reframe disability through the lens of faith and belonging.</p>
+                                </div>
+                                
+                                <div class="approach-card hover-lift" onclick="highlightCard(this)">
+                                    <div class="card-number">02</div>
+                                    <h3>Focus on Visibility</h3>
+                                    <p>We focus on visibility, we pursue authentic inclusion, transformative discipleship, and lasting dignity.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-sidebar">
+                        <div class="stats-card floating-element">
+                            <h3>Our Impact</h3>
+                            <div class="stat-item">
+                                <span class="stat-number" data-target="1000">0</span>
+                                <span class="stat-label">Families Served</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-target="50">0</span>
+                                <span class="stat-label">Churches Equipped</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-target="5">0</span>
+                                <span class="stat-label">Years of Service</span>
+                            </div>
+                        </div>
+
+                        <div class="cta-card pulse-card">
+                            <h3>Get Involved</h3>
+                            <p>Join us in building inclusive communities.</p>
+                            <button class="btn btn-primary" onclick="showModal('getInvolved')">Learn How</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-  </section>
 
-  <section class="container">
-    <h3>Functions Demo</h3>
-    <div class="row">
-      <div id="sizeBox" class="box wide">Box</div>
+    <!-- WHAT WE DO PAGE -->
+    <div id="what-we-do" class="page">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title fade-in">What We Do</h1>
+                <div class="breadcrumb">
+                    <a href="#" onclick="showPage('home')">Home</a> / <span>What We Do</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="intro-section">
+                    <p class="intro-text slide-in-up">
+                        Our work is guided by five core pillars that reflect our commitment to restoring dignity, inclusion, and discipleship for persons with disabilities (PWDs) and their caregivers.
+                    </p>
+                </div>
+
+                <!-- Interactive Pillars -->
+                <div class="pillars-section">
+                    <div class="pillars-grid">
+                        <!-- Pillar 1 -->
+                        <div class="pillar-card" data-pillar="1" onclick="expandPillar(this)">
+                            <div class="pillar-header">
+                                <div class="pillar-number">01</div>
+                                <h2>Family & Caregiver Empowerment</h2>
+                            </div>
+                            <div class="pillar-content">
+                                <p>We uplift the entire caregiving unit of Persons with disabilities (PWDs), emotionally, economically, and spiritually, recognizing that empowered families create sustainable support systems.</p>
+                                <div class="pillar-details">
+                                    <ul>
+                                        <li>Emotional support programs</li>
+                                        <li>Economic empowerment initiatives</li>
+                                        <li>Spiritual guidance and counseling</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pillar 2 -->
+                        <div class="pillar-card" data-pillar="2" onclick="expandPillar(this)">
+                            <div class="pillar-header">
+                                <div class="pillar-number">02</div>
+                                <h2>Holistic Community Support</h2>
+                            </div>
+                            <div class="pillar-content">
+                                <p>We meet practical needs through therapy, training, and advocacy, while tackling stigma and systemic exclusion at the grassroots level.</p>
+                                <div class="pillar-details">
+                                    <ul>
+                                        <li>Therapy and rehabilitation services</li>
+                                        <li>Skills training programs</li>
+                                        <li>Community advocacy initiatives</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pillar 3 -->
+                        <div class="pillar-card" data-pillar="3" onclick="expandPillar(this)">
+                            <div class="pillar-header">
+                                <div class="pillar-number">03</div>
+                                <h2>Faith-Inclusive Transformation</h2>
+                            </div>
+                            <div class="pillar-content">
+                                <p>We restore dignity by integrating persons with disabilities into the spiritual life of churches and communities.</p>
+                                <div class="pillar-details">
+                                    <ul>
+                                        <li>Church accessibility programs</li>
+                                        <li>Inclusive worship practices</li>
+                                        <li>Spiritual mentorship</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pillar 4 -->
+                        <div class="pillar-card" data-pillar="4" onclick="expandPillar(this)">
+                            <div class="pillar-header">
+                                <div class="pillar-number">04</div>
+                                <h2>Grassroots Impact, Scalable Models</h2>
+                            </div>
+                            <div class="pillar-content">
+                                <p>We start local, in communities like Kibera, and develop inclusive models that are community-driven, faith-rooted, and scalable across Africa.</p>
+                                <div class="pillar-details">
+                                    <ul>
+                                        <li>Local community programs</li>
+                                        <li>Scalable model development</li>
+                                        <li>Cross-Africa expansion</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pillar 5 -->
+                        <div class="pillar-card" data-pillar="5" onclick="expandPillar(this)">
+                            <div class="pillar-header">
+                                <div class="pillar-number">05</div>
+                                <h2>Church & Parachurch Equipping</h2>
+                            </div>
+                            <div class="pillar-content">
+                                <p>We train leaders, equip churches and parachurch, and build the theological and structural capacity for disability ministry rooted in sound doctrine and love.</p>
+                                <div class="pillar-details">
+                                    <ul>
+                                        <li>Leadership training programs</li>
+                                        <li>Theological education</li>
+                                        <li>Structural capacity building</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Timeline -->
+                <div class="timeline-section">
+                    <h2 class="section-title">Our Process</h2>
+                    <div class="timeline">
+                        <div class="timeline-item" onclick="animateTimelineItem(this)">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3>Assessment</h3>
+                                <p>Understanding community needs and challenges</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" onclick="animateTimelineItem(this)">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3>Planning</h3>
+                                <p>Developing tailored intervention strategies</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" onclick="animateTimelineItem(this)">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3>Implementation</h3>
+                                <p>Executing programs with community partners</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" onclick="animateTimelineItem(this)">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3>Evaluation</h3>
+                                <p>Measuring impact and scaling successful models</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-    <div class="row">
-      <button class="btn" id="growBtn">Grow</button>
-      <button class="btn" id="shrinkBtn">Shrink</button>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title fade-in">Contact Us</h1>
+                <div class="breadcrumb">
+                    <a href="#" onclick="showPage('home')">Home</a> / <span>Contact</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="contact-card slide-in-left">
+                            <h3>Get in Touch</h3>
+                            <div class="contact-item">
+                                <strong>📍 Location:</strong>
+                                <p>Kibera, Nairobi, Kenya</p>
+                            </div>
+                            <div class="contact-item">
+                                <strong>📧 Email:</strong>
+                                <p>info@africaabilitytrust.org</p>
+                            </div>
+                            <div class="contact-item">
+                                <strong>📞 Phone:</strong>
+                                <p>+254 XXX XXX XXX</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form class="animated-form slide-in-right" onsubmit="submitForm(event)">
+                            <h3>Send us a Message</h3>
+                            <div class="form-group">
+                                <input type="text" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="Your Message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-    <p id="scopeText" class="scope-line">Clicks: 0</p>
-    <button class="btn" id="scopeBtn">Click</button>
-  </section>
 
-  <div id="backdrop" class="backdrop hidden"></div>
-  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <h4 id="modalTitle">Apply to PLP</h4>
-    <p>Learn, code, grow with mentors, projects, and community. Beginner level, flexible schedule, 16 weeks.</p>
-    <div class="row">
-      <button class="btn" id="colorBtn">Change Theme</button>
-      <button class="btn outline" id="closeModalBtn">Close</button>
+    <!-- Modals -->
+    <div id="learnMore" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('learnMore')">&times;</span>
+            <h2>Learn More About Our Work</h2>
+            <p>Africa Ability Trust is based in Kibera, just five kilometers southwest of Nairobi. We walk with families navigating disability, poverty, and social stigma.</p>
+            <button class="btn btn-primary" onclick="closeModal('learnMore')">Close</button>
+        </div>
     </div>
-  </div>
 
-  <footer class="container">
-    <p class="muted small">Demo site for transitions, animations, and JavaScript functions.</p>
-  </footer>
+    <div id="getInvolved" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('getInvolved')">&times;</span>
+            <h2>Get Involved</h2>
+            <p>There are many ways to support our mission of empowering communities and building inclusive spaces.</p>
+            <div class="involvement-options">
+                <div class="option-card">
+                    <h4>Volunteer</h4>
+                    <p>Join our team in Kibera</p>
+                </div>
+                <div class="option-card">
+                    <h4>Donate</h4>
+                    <p>Support our programs</p>
+                </div>
+                <div class="option-card">
+                    <h4>Partner</h4>
+                    <p>Collaborate with us</p>
+                </div>
+            </div>
+            <button class="btn btn-primary" onclick="closeModal('getInvolved')">Close</button>
+        </div>
+    </div>
 
-  <script src="script.js"></script>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Africa Ability Trust, 2025. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
